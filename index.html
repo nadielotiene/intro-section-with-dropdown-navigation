@@ -20,47 +20,55 @@
       </div>
 
       <div class="menu-icon__img--div">  
-        <a href="#" class="menu-icon__link">
+        <a href="#" class="menu-icon__link" id="menu-toggle">
           <img src="/images/icon-menu.svg" alt="menu icon" class="menu-icon__img">
         </a>
       </div>
       
-      <!-- <nav class="nav">
-        <ul class="nav--list">
-          <li class="nav__list"><a href="#" class="nav__link">Features</a></li>
-            <ul class="features__sub-list">
-              <li class="nav__list"><a href="#" class="nav__link">
-                <img src="/images/icon-todo.svg" alt="notebook" class="list__icon">Todo List</a></li>
-              <li class="nav__list"><a href="#" class="nav__link">
-                <img src="/images/icon-calendar.svg" alt="calendar" class="list__icon">Calendar</a></li>
-              <li class="nav__list"><a href="#" class="nav__link">
-                <img src="/images/icon-reminders.svg" alt="bell" class="list__icon">Reminders</a></li>
-              <li class="nav__list"><a href="#" class="nav__link">
-                <img src="/images/icon-planning.svg" alt="wall clock" class="list__icon">Planning</a></li>
-            </ul>
-          <li class="nav__list"><a href="#" class="nav__link">Company</a></li>
-            <ul class="company__sub-list">
-              <li class="nav__list"><a href="#" class="nav__link">History</a></li>
-              <li class="nav__list"><a href="#" class="nav__link">Our Team</a></li>
-              <li class="nav__list"><a href="#" class="nav__link">Blog</a></li>
-            </ul>
+      <nav class="nav" id="mobile-nav">
+        <ul class="menu">
+          <li class="nav__list has-dropdown">
+            <a href="#" class="nav__link">Features</a>
+              <ul class="dropdown nested features">
+                <li class="nav__list"><a href="#" class="nav__link">
+                  <img src="/images/icon-todo.svg" alt="notebook" class="list__icon">Todo List</a></li>
+                <li class="nav__list"><a href="#" class="nav__link">
+                  <img src="/images/icon-calendar.svg" alt="calendar" class="list__icon">Calendar</a></li>
+                <li class="nav__list"><a href="#" class="nav__link">
+                  <img src="/images/icon-reminders.svg" alt="bell" class="list__icon">Reminders</a></li>
+                <li class="nav__list"><a href="#" class="nav__link">
+                  <img src="/images/icon-planning.svg" alt="wall clock" class="list__icon">Planning</a></li>
+              </ul>
+            </li>
+          <li class="nav__list has-dropdown">
+            <a href="#" class="nav__link">Company</a>
+              <ul class="dropdown nested company">
+                <li class="nav__list"><a href="#" class="nav__link">History</a></li>
+                <li class="nav__list"><a href="#" class="nav__link">Our Team</a></li>
+                <li class="nav__list"><a href="#" class="nav__link">Blog</a></li>
+              </ul>
+          </li>
           <li class="nav__list"><a href="#" class="nav__link">Careers</a></li>
           <li class="nav__list"><a href="#" class="nav__link">About</a></li>
         </ul>
-      </nav> -->
+        
+        <div class="user--div">
+          <div class="login__btn"><a href="#" class="nav__link">Login</a></div>
+          <div class="register__btn"><a href="#" class="nav__link">Register</a></div>
+        </div>
+      </nav>
       
-      <!-- <div class="user--div">
-        <div class="login__btn"><a href="#" class="nav__link">Login</a></div>
-        <div class="register__btn"><a href="#" class="nav__link">Register</a></div>
-      </div>
-    </div> -->
+    </div>
   </header>
   
-  <main class="hero">
-    <div class="hero__img--div">
+  <section class="hero__img--div">
+    <picture>
+      <source srcset="/images/image-hero-desktop.png" media="(min-width: 768px)">
       <img src="/images/image-hero-mobile.png" alt="hero image" class="hero__img">
-    </div>
-    
+    </picture>
+  </section>
+  
+  <main class="hero">
     <div class="container hero__text">
       <h1 class="title">Make remote work</h1>
 
@@ -74,8 +82,8 @@
       </div>
     </div>
   </main>
-
-  <footer class="sponsors">
+    
+    <footer class="footer">
     <div class="container">
       <div class="footer__img--div">
         <a href="#" class="footer__img__link"><img src="/images/client-databiz.svg" alt="databiz logo" class="footer__img"></a>
@@ -98,5 +106,27 @@
   </div> -->
 
 </div>
+
+<script>
+  const menuToggle = document.getElementById("menu-toggle");
+  const mobileNav = document.getElementById("mobile-nav");
+
+  menuToggle.addEventListener("click", (e) => {
+    e.preventDefault();
+    mobileNav.classList.toggle("open");
+  });
+
+  const dropdownParents = document.querySelectorAll(".has-dropdown");
+
+  dropdownParents.forEach(parent => {
+    const link = parent.querySelector(".nav__link");
+
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      parent.classList.toggle("open");
+    });
+  });
+</script>
+
 </body>
 </html>
